@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrossFit Blaze AI Search Acquisition Optimization Design</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8f5ef;
+      --paper: #fffdf8;
+      --ink: #1f1b16;
+      --muted: #6f6357;
+      --rule: #ded4c5;
+      --accent: #d64500;
+      --accent-dark: #9f3300;
+      --code-bg: #f1e8da;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      padding: 48px 24px;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(28px, 5vw, 56px);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      box-shadow: 0 18px 60px rgba(31, 27, 22, 0.08);
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.12;
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(2.25rem, 5vw, 4.5rem);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+    }
+
+    h3 {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: var(--accent-dark);
+    }
+
+    p {
+      margin: 16px 0 0;
+    }
+
+    ul {
+      margin: 14px 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    code {
+      padding: 0.12rem 0.32rem;
+      border-radius: 4px;
+      background: var(--code-bg);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.94em;
+    }
+
+    .meta {
+      display: grid;
+      gap: 8px;
+      margin: 28px 0 0;
+      padding: 18px 20px;
+      background: #fbf6ed;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .lede {
+      max-width: 820px;
+      margin-top: 28px;
+      font-size: 1.15rem;
+      color: #393129;
+    }
+
+    .note {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: #fff7ef;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="section-kicker">Design Spec</span>
+    <h1>CrossFit Blaze AI Search Acquisition Optimization Design</h1>
+
+    <div class="meta" aria-label="Document metadata">
+      <div><strong>Date:</strong> 2026-05-15</div>
+      <div><strong>Site:</strong> <code>https://www.crossfitblaze.com</code></div>
+      <div><strong>Local source:</strong> <code>/Users/jasonanderson/Claude Code/cfblaze-revamp</code></div>
+    </div>
+
+    <p class="lede">
+      Optimize CrossFit Blaze for new member acquisition across two primary entry points: CrossFit group classes and personal training. The work follows Google's AI search guidance by improving the same fundamentals that help traditional Search: crawlable pages, clear canonical URLs, helpful original content, complete local-business details, rich media context, and a strong page experience.
+    </p>
+
+    <h2>Goal</h2>
+    <p>Optimize CrossFit Blaze for new member acquisition across two primary entry points:</p>
+    <ul>
+      <li>CrossFit group classes for beginners, returning athletes, seasonal residents, and locals who want coaching plus community.</li>
+      <li>Personal training for active adults, seniors, post-rehab clients, hesitant beginners, and people who need a more private start.</li>
+    </ul>
+    <p>The site should be easier for Google, AI answer systems, and humans to understand without creating AI-only content.</p>
+
+    <h2>Source Guidance</h2>
+    <p>Google's AI optimization guide emphasizes:</p>
+    <ul>
+      <li>Keep using normal SEO fundamentals; there is no separate AI-specific trick.</li>
+      <li>Make pages crawlable, indexable, and technically clear.</li>
+      <li>Publish helpful, unique, people-first content.</li>
+      <li>Make page content easy to understand through headings, media, text, and structured data.</li>
+      <li>Avoid relying on unsupported AI-specific conventions such as <code>llms.txt</code> as a ranking mechanism.</li>
+    </ul>
+
+    <h2>Current Site Shape</h2>
+    <p>The local source is a static HTML site with these public pages:</p>
+    <ul>
+      <li><code>index.html</code></li>
+      <li><code>personal-training.html</code></li>
+      <li><code>pricing.html</code></li>
+      <li><code>schedule.html</code></li>
+      <li><code>free-trial.html</code></li>
+      <li><code>seniors.html</code></li>
+      <li><code>beginners.html</code></li>
+      <li><code>about.html</code></li>
+      <li><code>contact.html</code></li>
+      <li><code>sitemap.xml</code></li>
+      <li><code>assets/styles.css</code></li>
+    </ul>
+    <p>The site already has strong brand positioning: owner-coached since 2009, scaled to the person, Naples local identity, personal training, seniors, beginners, and three free classes. The main gap is that the technical layer and page architecture do not yet make those strengths explicit enough for search engines and AI answer systems.</p>
+
+    <h2>Proposed Approach</h2>
+    <p>Use the full Approach C: technical SEO foundation plus acquisition-focused content improvements.</p>
+    <p>This approach intentionally does not chase AI-search gimmicks. It strengthens the facts, context, and crawlability that AI systems rely on when summarizing local businesses.</p>
+
+    <h2>Technical Architecture</h2>
+
+    <h3>Canonical URLs</h3>
+    <p>Add a <code>&lt;link rel="canonical"&gt;</code> tag to every HTML page using the preferred <code>https://www.crossfitblaze.com/...</code> URL.</p>
+    <p>Canonical targets:</p>
+    <ul>
+      <li>Home: <code>https://www.crossfitblaze.com/</code></li>
+      <li>Other pages: current <code>.html</code> URLs, unless hosting redirects are later changed to extensionless URLs.</li>
+    </ul>
+
+    <h3>Robots and Sitemap</h3>
+    <p>Add <code>robots.txt</code> with:</p>
+    <ul>
+      <li>Allow normal crawling.</li>
+      <li>Point crawlers to <code>https://www.crossfitblaze.com/sitemap.xml</code>.</li>
+    </ul>
+    <p>Keep <code>sitemap.xml</code> aligned with the same canonical URL style.</p>
+
+    <h3>Structured Data</h3>
+    <p>Add JSON-LD structured data to the site. Use only stable factual information already present in the site or the CrossFit Blaze brand reference.</p>
+    <p>Recommended schema:</p>
+    <ul>
+      <li>Sitewide <code>LocalBusiness</code> or <code>SportsActivityLocation</code> graph for CrossFit Blaze.</li>
+      <li><code>PostalAddress</code>, <code>GeoCoordinates</code> if reliable coordinates are available.</li>
+      <li><code>OpeningHoursSpecification</code> based on class/open hours.</li>
+      <li><code>sameAs</code> links for Facebook, Instagram, Google Business Profile, and relevant CrossFit affiliate listing if available.</li>
+      <li><code>Offer</code> entries for three free classes, drop-in, CrossFit membership, and personal training.</li>
+      <li><code>Service</code> entries for CrossFit classes, personal training, beginners, and seniors/active adults.</li>
+      <li><code>FAQPage</code> only where visible FAQ content exists on the page.</li>
+    </ul>
+    <p>Schema must not invent claims, ratings, review counts, coordinates, or offers that are not visible or verifiable.</p>
+
+    <h3>Social Metadata</h3>
+    <p>Standardize Open Graph and Twitter metadata across all pages:</p>
+    <ul>
+      <li><code>og:type</code></li>
+      <li><code>og:title</code></li>
+      <li><code>og:description</code></li>
+      <li><code>og:url</code></li>
+      <li><code>og:image</code></li>
+      <li><code>twitter:card</code></li>
+      <li><code>twitter:title</code></li>
+      <li><code>twitter:description</code></li>
+      <li><code>twitter:image</code></li>
+    </ul>
+    <p>Use page-specific titles and descriptions, but keep the brand and Naples location visible.</p>
+
+    <h3>Legacy URL Risk</h3>
+    <p>Search results still appear to expose older WordPress-style paths, while the static source uses <code>.html</code> pages. The implementation should provide redirect guidance for the production host:</p>
+    <ul>
+      <li><code>/about/</code> to <code>/about.html</code></li>
+      <li><code>/personal-training/</code> to <code>/personal-training.html</code></li>
+      <li><code>/pricing/</code> to <code>/pricing.html</code></li>
+      <li><code>/schedule/</code> to <code>/schedule.html</code></li>
+      <li><code>/contact/</code> to <code>/contact.html</code></li>
+      <li><code>/free-trial/</code> to <code>/free-trial.html</code></li>
+      <li><code>/beginners/</code> to <code>/beginners.html</code></li>
+      <li><code>/seniors/</code> to <code>/seniors.html</code></li>
+    </ul>
+    <p>If host-level redirects are not available, canonical tags and internal links still reduce duplicate ambiguity, but redirects are preferred.</p>
+
+    <h2>Content Architecture</h2>
+
+    <h3>Home Page</h3>
+    <p>Position the home page as the decision hub:</p>
+    <ul>
+      <li>Primary path: "Start with CrossFit classes" for people who want coaching, community, strength, and accountability.</li>
+      <li>Secondary path: "Start with personal training" for people who need private coaching, extra confidence, injury-aware training, or age-specific support.</li>
+    </ul>
+    <p>Add a concise section that answers: "Which program should I start with?"</p>
+    <p>The answer should direct prospects without making them feel wrong:</p>
+    <ul>
+      <li>Choose CrossFit classes if you want group coaching, community, and a complete workout plan.</li>
+      <li>Choose personal training if you want privacy, specific goals, confidence before class, injury-aware coaching, or active-aging support.</li>
+    </ul>
+
+    <h3>CrossFit Classes Acquisition</h3>
+    <p>Strengthen the group-class path across home, beginners, schedule, pricing, and free-trial pages.</p>
+    <p>Content should answer:</p>
+    <ul>
+      <li>What happens in a first CrossFit class?</li>
+      <li>Do I need to be in shape first?</li>
+      <li>How are workouts scaled?</li>
+      <li>What is included in coaching?</li>
+      <li>Why is CrossFit Blaze different from a big-box gym or bootcamp?</li>
+      <li>How do I book the three free classes?</li>
+    </ul>
+
+    <h3>Personal Training Acquisition</h3>
+    <p>Strengthen personal training as a parallel acquisition route, not just an add-on.</p>
+    <p>Content should answer:</p>
+    <ul>
+      <li>When is personal training the better first step?</li>
+      <li>Is it appropriate for older adults?</li>
+      <li>Can Jason work around medical history, past injuries, or post-rehab needs?</li>
+      <li>What does the first session look like?</li>
+      <li>How does someone transition from personal training into classes if they want to?</li>
+    </ul>
+
+    <h3>Local Authority</h3>
+    <p>Make Naples and Collier County context explicit where natural:</p>
+    <ul>
+      <li>Naples, FL</li>
+      <li>North Naples</li>
+      <li>Collier County</li>
+      <li>Seasonal residents and snowbirds</li>
+      <li>Active adults and retirees</li>
+    </ul>
+    <p>Avoid keyword stuffing. The copy should still sound like CrossFit Blaze: local, direct, owner-coached, welcoming, and practical.</p>
+
+    <h3>FAQ Strategy</h3>
+    <p>Add visible FAQ sections where useful, then mark those sections with JSON-LD. Candidate pages:</p>
+    <ul>
+      <li><code>beginners.html</code>: first class, fitness level, scaling, soreness, booking.</li>
+      <li><code>personal-training.html</code>: who it is for, injury history, seniors, pricing, first session.</li>
+      <li><code>pricing.html</code>: free classes, contracts, drop-ins, personal training packs.</li>
+    </ul>
+    <p>Do not add FAQ schema for questions that are not visible on the page.</p>
+
+    <h2>Media and Accessibility</h2>
+    <p>Improve media context without redesigning the site:</p>
+    <ul>
+      <li>Use descriptive <code>alt</code> text for meaningful images.</li>
+      <li>Leave decorative avatars empty only when they do not add useful content.</li>
+      <li>Add width and height attributes or stable CSS sizing where practical to reduce layout shift.</li>
+      <li>Prefer real gym, facility, and coaching images over generic fitness imagery.</li>
+    </ul>
+
+    <h2>Internal Linking</h2>
+    <p>Use internal links to make the acquisition paths obvious:</p>
+    <ul>
+      <li>Home links to <code>beginners.html</code>, <code>personal-training.html</code>, <code>pricing.html</code>, <code>schedule.html</code>, and <code>free-trial.html</code>.</li>
+      <li>Beginners links to schedule, pricing, and free trial.</li>
+      <li>Personal training links to seniors, pricing, contact/free-trial path.</li>
+      <li>Pricing links back to classes and personal training explanation.</li>
+      <li>Schedule links to free trial and drop-in booking.</li>
+    </ul>
+
+    <h2>Non-Goals</h2>
+    <ul>
+      <li>No <code>llms.txt</code> implementation as an AI ranking tactic.</li>
+      <li>No hidden content for crawlers.</li>
+      <li>No fake reviews, fake ratings, invented coordinates, or exaggerated claims.</li>
+      <li>No broad visual redesign unless a technical/content change requires minor layout support.</li>
+      <li>No migration from static HTML to a framework.</li>
+    </ul>
+
+    <h2>Verification</h2>
+    <p>Implementation should be verified by:</p>
+    <ul>
+      <li>Opening the local site in a browser or static server.</li>
+      <li>Checking every page has exactly one canonical URL.</li>
+      <li>Checking structured data parses as valid JSON-LD.</li>
+      <li>Checking <code>sitemap.xml</code> and <code>robots.txt</code>.</li>
+      <li>Running a lightweight link check for internal links.</li>
+      <li>Inspecting visible content for duplicated, awkward, or keyword-stuffed copy.</li>
+    </ul>
+
+    <h2>Open Deployment Question</h2>
+    <p>The local site folder is not its own git repository and appears untracked inside a broader <code>Claude Code</code> repository. Before production deployment, confirm how <code>crossfitblaze.com</code> is hosted and how these static files are published.</p>
+
+    <p class="note">This spec intentionally avoids AI-search shortcuts. The optimization is built around factual local-business signals, helpful acquisition content, and clear technical structure.</p>
+  </main>
+</body>
+</html>
